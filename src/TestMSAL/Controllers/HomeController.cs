@@ -25,8 +25,33 @@ namespace TestMSAL.Controllers
             System.Diagnostics.Debug.WriteLine($"utid value:{utid}");
             string msalaccountid = ClaimsPrincipal.Current.GetMsalAccountId();
             System.Diagnostics.Debug.WriteLine($"msalaccountid value:{msalaccountid}");
-            //var accounts = app.GetAccountsAsync().Result;
-            
+            var accounts = app.GetAccountsAsync().Result;
+            if (accounts != null)
+            {
+                IAccount first = accounts.FirstOrDefault();
+                if (first != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"HomeAccountId value from Index:{first.HomeAccountId}");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("GetAccountsAsync returned an empty collection");
+                }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("GetAccountsAsync returned null");
+            }
+            IAccount account = app.GetAccountAsync(ClaimsPrincipal.Current.GetAccountId()).Result;
+            if (account != null)
+            {
+
+                System.Diagnostics.Debug.WriteLine($"HomeAccountId value from Index:{account.HomeAccountId}");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("GetAccountAsync returned null");
+            }
             return View();
         }
 

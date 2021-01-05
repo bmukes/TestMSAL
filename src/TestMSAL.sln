@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMSAL", "TestMSAL\TestMSAL.csproj", "{AC7538A4-0CB4-4CF6-9ECB-1E46CC54476F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC7538A4-0CB4-4CF6-9ECB-1E46CC54476F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC7538A4-0CB4-4CF6-9ECB-1E46CC54476F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC7538A4-0CB4-4CF6-9ECB-1E46CC54476F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC7538A4-0CB4-4CF6-9ECB-1E46CC54476F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBCA9BC1-7EE7-4663-B3B8-6984ED61AB37}
+	EndGlobalSection
+EndGlobal

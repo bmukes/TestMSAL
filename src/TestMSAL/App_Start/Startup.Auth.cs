@@ -83,17 +83,15 @@ namespace TestMSAL
         async Task OnAuthorizationCodeReceivedAsync(AuthorizationCodeReceivedNotification notification)
         {
  
-            notification.HandleCodeRedemption();
             IConfidentialClientApplication clientApp = await MsalAppBuilder.BuildConfidentialClientApplication();
-            AuthenticationResult result = await clientApp.AcquireTokenByAuthorizationCode(new[] { "openid", "profile", "offline_access" }, notification.Code)
-                .ExecuteAsync();
-            notification.TokenEndpointResponse = new OpenIdConnectMessage();
-            notification.TokenEndpointResponse.IdToken = result.IdToken;
+			AuthenticationResult result = await clientApp.AcquireTokenByAuthorizationCode(new[] { "openid", "profile", "offline_access" }, notification.Code)
+				.ExecuteAsync();
+			notification.HandleCodeRedemption(result.AccessToken, result.IdToken);
             notification.TokenEndpointResponse.Scope = String.Join(" ", result.Scopes);
-            var accounts = await clientApp.GetAccountsAsync();
-            IAccount first = accounts.First();
-            System.Diagnostics.Debug.WriteLine($"HomeAccountId value from OnAuthorizationCodeReceivedAsync:{first.HomeAccountId}");
-        }
+			var accounts = await clientApp.GetAccountsAsync();
+			IAccount first = accounts.First();
+			System.Diagnostics.Debug.WriteLine($"HomeAccountId value from OnAuthorizationCodeReceivedAsync:{first.HomeAccountId}");
+		}
         private static string EnsureTrailingSlash(string value)
         {
             if (value == null)
